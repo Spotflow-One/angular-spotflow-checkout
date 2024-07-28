@@ -1,5 +1,5 @@
 {
-  "name": "spotflow-check",
+  "name": "ng-spotflow-checkout",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^18.1.0",
