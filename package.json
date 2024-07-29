@@ -3,6 +3,15 @@
   "version": "0.0.1",
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "Spotflow",
+    "Angular"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Spotflow-One/react-spotflow-checkout"
+  },
+  "homepage": "https://github.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +19,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^18.1.0",
     "@angular/common": "^18.1.0",

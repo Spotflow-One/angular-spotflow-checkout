@@ -7,8 +7,8 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-ng-spotflow-checkout',
   standalone: true,
   imports: [CommonModule],
-  template: './ng-spotflow-checkout.html',
-  styles: ['./ng-spotflow-checkout.scss'],
+  templateUrl: './ng-spotflow-checkout.html',
+  styleUrl: './ng-spotflow-checkout.scss',
 })
 export class NgSpotflowCheckoutComponent {
   @Input() secret_key!: string;

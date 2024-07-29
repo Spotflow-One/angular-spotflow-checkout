@@ -98,39 +98,6 @@
         }
       }
     },
-    "spotflow-check": {
-      "projectType": "library",
-      "root": "projects/spotflow-check",
-      "sourceRoot": "projects/spotflow-check/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/spotflow-check/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/spotflow-check/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/spotflow-check/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/spotflow-check/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        }
-      }
-    },
     "ng-spotflow-checkout": {
       "projectType": "library",
       "root": "projects/ng-spotflow-checkout",
