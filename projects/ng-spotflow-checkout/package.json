@@ -1,5 +1,5 @@
 {
-  "name": "ng-spotflow-checkout",
+  "name": "@spot-flow/ng-spotflow-checkout",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^18.1.0",
@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "scripts": {
+    "build": "ng build ng-spotflow-checkout"
   },
   "sideEffects": false
 }

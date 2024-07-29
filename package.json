@@ -1,6 +1,8 @@
 {
-  "name": "angular-spotflow-checkout",
-  "version": "0.0.0",
+  "name": "@spot-flow/ng-spotflow-checkout",
+  "version": "0.0.1",
+  "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
