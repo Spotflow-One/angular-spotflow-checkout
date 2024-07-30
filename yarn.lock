@@ -2953,7 +2953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spot-flow/ng-spotflow-checkout@npm:^0.0.2, @spot-flow/ng-spotflow-checkout@workspace:.":
+"@spot-flow/ng-spotflow-checkout@workspace:.":
   version: 0.0.0-use.local
   resolution: "@spot-flow/ng-spotflow-checkout@workspace:."
   dependencies:
@@ -2969,7 +2969,6 @@ __metadata:
     "@angular/platform-browser-dynamic": "npm:^18.1.0"
     "@angular/router": "npm:^18.1.0"
     "@spot-flow/checkout-inline-js": "npm:^0.0.5"
-    "@spot-flow/ng-spotflow-checkout": "npm:^0.0.2"
     "@types/jasmine": "npm:~5.1.0"
     jasmine-core: "npm:~5.1.0"
     karma: "npm:~6.4.0"

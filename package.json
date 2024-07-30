@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/ng-spotflow-checkout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "main": "",
   "license": "MIT",
@@ -10,9 +10,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Spotflow-One/react-spotflow-checkout"
+    "url": "https://github.com/Spotflow-One/angular-spotflow-checkout"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://github.com/Spotflow-One/angular-spotflow-checkout",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -30,7 +30,6 @@
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
     "@spot-flow/checkout-inline-js": "^0.0.5",
-    "@spot-flow/ng-spotflow-checkout": "^0.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
