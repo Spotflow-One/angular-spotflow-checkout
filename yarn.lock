@@ -2946,14 +2946,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spot-flow/checkout-inline-js@npm:^0.0.4":
-  version: 0.0.4
-  resolution: "@spot-flow/checkout-inline-js@npm:0.0.4"
-  checksum: 10c0/4f27e2431655a22a063a55e6f545f37d0932e918ceecd692d6d12d37bec3c4144f7e03e64a20b73ba12726d0c1ba76547af407ebe35bf624b7593e1a0d1d0626
+"@spot-flow/checkout-inline-js@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@spot-flow/checkout-inline-js@npm:0.0.5"
+  checksum: 10c0/2e7affdfd4b079b816d90555d190e068aafcb47501ff3d3e05d4ff801c8099f3b3dcc736d5b80fcbcc8791157483f092cb8500b1966f1f0ccb09c2dc241665e3
   languageName: node
   linkType: hard
 
-"@spot-flow/ng-spotflow-checkout@workspace:.":
+"@spot-flow/ng-spotflow-checkout@npm:^0.0.2, @spot-flow/ng-spotflow-checkout@workspace:.":
   version: 0.0.0-use.local
   resolution: "@spot-flow/ng-spotflow-checkout@workspace:."
   dependencies:
@@ -2968,7 +2968,8 @@ __metadata:
     "@angular/platform-browser": "npm:^18.1.0"
     "@angular/platform-browser-dynamic": "npm:^18.1.0"
     "@angular/router": "npm:^18.1.0"
-    "@spot-flow/checkout-inline-js": "npm:^0.0.4"
+    "@spot-flow/checkout-inline-js": "npm:^0.0.5"
+    "@spot-flow/ng-spotflow-checkout": "npm:^0.0.2"
     "@types/jasmine": "npm:~5.1.0"
     jasmine-core: "npm:~5.1.0"
     karma: "npm:~6.4.0"

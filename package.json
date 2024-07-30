@@ -1,7 +1,8 @@
 {
   "name": "@spot-flow/ng-spotflow-checkout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
+  "main": "",
   "license": "MIT",
   "keywords": [
     "Spotflow",
@@ -28,7 +29,8 @@
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
-    "@spot-flow/checkout-inline-js": "^0.0.4",
+    "@spot-flow/checkout-inline-js": "^0.0.5",
+    "@spot-flow/ng-spotflow-checkout": "^0.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
