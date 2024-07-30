@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import CheckoutForm from '@spot-flow/checkout-inline-js';
+import { CheckoutForm } from '@spot-flow/checkout-inline-js';
 import { InlinePaymentOptions } from '../interfaces/checkout-model';
 import { CommonModule } from '@angular/common';
 

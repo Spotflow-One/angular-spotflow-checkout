@@ -11,4 +11,7 @@ import { NgSpotflowCheckoutComponent } from '../../projects/ng-spotflow-checkout
 })
 export class AppComponent {
   title = 'angular-spotflow-checkout';
+  email = 'olukayodeogunnowo@hotmail.com';
+  secret_key = 'sk_test_f998479c0ee241a795270a55aa8dab27';
+  amount = 10;
 }

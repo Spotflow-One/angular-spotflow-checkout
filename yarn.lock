@@ -2946,10 +2946,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spot-flow/checkout-inline-js@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@spot-flow/checkout-inline-js@npm:0.0.1"
-  checksum: 10c0/8026d890617653b84ae26f29905655129c1b3b3c10ed9e74be109e2085a0e03a81f2d3aefe12001491e9cd1ab34c32826daf5f686ca8e56d7c4a0a126e1c7488
+"@spot-flow/checkout-inline-js@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "@spot-flow/checkout-inline-js@npm:0.0.4"
+  checksum: 10c0/4f27e2431655a22a063a55e6f545f37d0932e918ceecd692d6d12d37bec3c4144f7e03e64a20b73ba12726d0c1ba76547af407ebe35bf624b7593e1a0d1d0626
   languageName: node
   linkType: hard
 
@@ -2968,7 +2968,7 @@ __metadata:
     "@angular/platform-browser": "npm:^18.1.0"
     "@angular/platform-browser-dynamic": "npm:^18.1.0"
     "@angular/router": "npm:^18.1.0"
-    "@spot-flow/checkout-inline-js": "npm:^0.0.1"
+    "@spot-flow/checkout-inline-js": "npm:^0.0.4"
     "@types/jasmine": "npm:~5.1.0"
     jasmine-core: "npm:~5.1.0"
     karma: "npm:~6.4.0"
