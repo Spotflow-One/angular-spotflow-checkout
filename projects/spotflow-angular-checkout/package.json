@@ -1,0 +1,22 @@
+{
+  "name": "spotflow-angular-checkout",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^18.1.0",
+    "@angular/core": "^18.1.0"
+  },
+  "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Spotflow-One/angular-spotflow-checkout"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "homepage": "https://github.com/Spotflow-One/angular-spotflow-checkout",
+  "license": "MIT",
+  "scripts": {
+    "build": "ng build ng-spotflow-checkout"
+  },
+  "sideEffects": false
+}
