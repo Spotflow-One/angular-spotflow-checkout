@@ -18,7 +18,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "paths": {
-      "ng-spotflow-checkout": ["./dist/ng-spotflow-checkout"]
+      "ng-spotflow-checkout": [
+        "./dist/ng-spotflow-checkout"
+      ],
+      "spotflow-angular-checkout": [
+        "./dist/spotflow-angular-checkout"
+      ]
     },
     "module": "ES2022",
     "lib": ["ES2022", "dom"]

@@ -35,6 +35,39 @@
           }
         }
       }
+    },
+    "spotflow-angular-checkout": {
+      "projectType": "library",
+      "root": "projects/spotflow-angular-checkout",
+      "sourceRoot": "projects/spotflow-angular-checkout/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/spotflow-angular-checkout/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/spotflow-angular-checkout/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/spotflow-angular-checkout/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/spotflow-angular-checkout/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }
