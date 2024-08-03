@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlinePaymentOptions } from '../interfaces/checkout-model';
-import { SpotflowAngularCheckoutService } from '../spotflow-angular-checkout.service';
 
 @Component({
   selector: 'spotflow-make-payment',
@@ -9,7 +8,7 @@ import { SpotflowAngularCheckoutService } from '../spotflow-angular-checkout.ser
   imports: [CommonModule],
   templateUrl: './make-payment.component.html',
   styleUrl: './make-payment.component.css',
-  providers: [SpotflowAngularCheckoutService],
+  providers: [],
 })
 export class MakePaymentComponent {
   @Input() secret_key!: string;
@@ -22,15 +21,45 @@ export class MakePaymentComponent {
   @Input() className?: string;
   @Input() text?: string;
 
-  constructor(private spotflowService: SpotflowAngularCheckoutService) {}
+  constructor() {
+    const script = document.createElement('script');
+    const inlineSdk =
+      'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js';
+    script.src = inlineSdk;
+    if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+      document.body.appendChild(script);
+    }
+  }
   private inlinePaymentOptions!: InlinePaymentOptions;
 
   makePayment() {
     this.preparePayment();
-    if (this.inlinePaymentOptions) {
-      this.spotflowService.setup(this.inlinePaymentOptions);
+    // if (this.inlinePaymentOptions) {
+    //   this.spotflowService.setup(this.inlinePaymentOptions);
+    // }
+    if (window.SpotflowCheckout) {
+      const checkout = window.SpotflowCheckout;
+      if (
+        this.inlinePaymentOptions.amount &&
+        this.inlinePaymentOptions.email &&
+        this.inlinePaymentOptions.email
+      ) {
+        const payment = new checkout.CheckoutForm(
+          this.inlinePaymentOptions?.merchantKey,
+          this.inlinePaymentOptions?.email,
+          this.inlinePaymentOptions?.amount || 0
+        );
+        payment.setup();
+      } else {
+        console.error(
+          'Invalid payment data, kindly check the amount, email and secret key provided'
+        );
+      }
+    } else {
+      console.error('SpotflowCheckout is not defined');
     }
   }
+
   ngOnInit(): void {}
 
   preparePayment() {
