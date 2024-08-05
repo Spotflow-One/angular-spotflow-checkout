@@ -57,8 +57,8 @@ import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
 export class AppComponent {
   title = 'spotflow-ng-demo';
   // use your Secre API keys <sk_test_f998479c0e******************8dab2>
-  merchantKey = 'sk_test_f998479c0ee241a795270a55aa8dab27';
-  planId = 'a9d53c4c-4452-4d00-953e-bb0f2780702a';
+  merchantKey = 'sk_test_f9984*****************';
+  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
   email = 'oajhdjkna@gamil.com';
   amount = 9;
   currency = 'NGN';
@@ -68,28 +68,75 @@ export class AppComponent {
 
 ## Usage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+Two ways of using the package
 
-## Development server
+1. [As a commponent](#using-spotflow-as-components)
+2. [As a Direct Serive](#using-directly-as-a-service)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Using Spotflow as components
 
-## Code scaffolding
+```typescript
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
+  templateUrl: './app.component.html',
+  template: `
+  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
+    [email]="email" className="btn-primary">
+  </spotflow-make-payment>
+  `,
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
+  merchantKey = 'sk_test_f9984*****************';
+  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
+  email = 'oajhdjkna@gamil.com';
+  amount = 9;
+  currency = 'NGN';
+}
 
-## Build
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Using directly as a service
 
-## Running unit tests
+```typescript
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, SpotflowAngularCheckoutModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  providers: [SpotflowAngularCheckoutService],
+})
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  merchantKey = 'sk_test_f998479c0******************8dab27';
+  planId = 'a9d53c4c-4452-4d00-953e-************';
+  email = 'olu************owo@yupmail.com';
+  amount = 9;
+  currency = 'NGN';
 
-## Running end-to-end tests
+  constructor(
+    private spotflowAngularCheckoutService: SpotflowAngularCheckoutService
+  ) {}
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  makePayment() {
+    const paymentData = {
+      amount: this.amount,
+      currency: this.currency,
+      email: this.email,
+      merchantKey: this.merchantKey,
+      reference: '',
+      plan: this.planId,
+    };
 
-## Further help
+    this.spotflowAngularCheckoutService.setup(paymentData);
+  }
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
