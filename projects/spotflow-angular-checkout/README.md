@@ -1,24 +1,142 @@
-# SpotflowAngularCheckout
+# Spotflow Angular Library
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+The SDK help you create a sealess payment in you angular app. Our Spotflow slider helps you to collect payment in no time
 
-## Code scaffolding
+Available features includes:
 
-Run `ng generate component component-name --project spotflow-angular-checkout` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project spotflow-angular-checkout`.
-> Note: Don't forget to add `--project spotflow-angular-checkout` or else it will be added to the default project in your `angular.json` file. 
+- Collections: Card, Bank Transfer, USSD
+- Tokenisation and Subscriptions
 
-## Build
+## Requirements
 
-Run `ng build spotflow-angular-checkout` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Spotflow API Merchant Keys
+2. Node version >=16..0 and npm > = 7.xx
 
-## Publishing
+## Installation
 
-After building your library with `ng build spotflow-angular-checkout`, go to the dist folder `cd dist/spotflow-angular-checkout` and run `npm publish`.
+```bash
+$ npm install @spot-flow/ng-spotflow-checkout
+# or 
+$ yarn add @spot-flow/ng-spotflow-checkout
+```
 
-## Running unit tests
+## Initialization
 
-Run `ng test spotflow-angular-checkout` to execute the unit tests via [Karma](https://karma-runner.github.io).
+For older version of Angular, you can use the module but for recent, standalone angular version
 
-## Further help
+1 for standard Angular version
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```typescript
+import { CommonModule } from '@angular/common';
+import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [CommonModule, SpotflowAngularCheckoutModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+```
+
+2 for standalone angular version
+
+```typescript
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
+  templateUrl: './app.component.html',
+  template: `
+  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
+    [email]="email" className="btn-primary">
+  </spotflow-make-payment>
+  `,
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
+  merchantKey = 'sk_test_f9984*****************';
+  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
+  email = 'oajhdjkna@gamil.com';
+  amount = 9;
+  currency = 'NGN';
+}
+
+```
+
+## Usage
+
+Two ways of using the package
+
+1. [As a commponent](#using-spotflow-as-components)
+2. [As a Direct Serive](#using-directly-as-a-service)
+
+### Using Spotflow as components
+
+```typescript
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
+  templateUrl: './app.component.html',
+  template: `
+  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
+    [email]="email" className="btn-primary">
+  </spotflow-make-payment>
+  `,
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
+  merchantKey = 'sk_test_f9984*****************';
+  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
+  email = 'oajhdjkna@gamil.com';
+  amount = 9;
+  currency = 'NGN';
+}
+
+```
+
+### Using directly as a service
+
+```typescript
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, SpotflowAngularCheckoutModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  providers: [SpotflowAngularCheckoutService],
+})
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  merchantKey = 'sk_test_f998479c0******************8dab27';
+  planId = 'a9d53c4c-4452-4d00-953e-************';
+  email = 'olu************owo@yupmail.com';
+  amount = 9;
+  currency = 'NGN';
+
+  constructor(
+    private spotflowAngularCheckoutService: SpotflowAngularCheckoutService
+  ) {}
+
+  makePayment() {
+    const paymentData = {
+      amount: this.amount,
+      currency: this.currency,
+      email: this.email,
+      merchantKey: this.merchantKey,
+      reference: '',
+      plan: this.planId,
+    };
+
+    this.spotflowAngularCheckoutService.setup(paymentData);
+  }
+}
+
+```
