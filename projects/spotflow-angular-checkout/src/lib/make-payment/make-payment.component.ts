@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlinePaymentOptions } from '../interfaces/checkout-model';
 
@@ -12,9 +12,10 @@ import { InlinePaymentOptions } from '../interfaces/checkout-model';
 })
 export class MakePaymentComponent {
   @Input() secret_key!: string;
-  @Input() plan_id?: string;
+  @Input() plan_id!: string;
   @Input() email!: string;
-  @Input() amount!: number;
+  @Input() encryption_key!: string;
+  @Input() amount?: number;
   @Input() tx_ref?: string;
   @Input() style: any;
   @Input() data?: InlinePaymentOptions;
@@ -69,6 +70,7 @@ export class MakePaymentComponent {
       planId: this.plan_id,
       amount: this.amount,
       tx_ref: this.tx_ref,
+      encryptionKey: this.encryption_key,
     };
   }
 }
