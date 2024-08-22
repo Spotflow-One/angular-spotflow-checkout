@@ -1,6 +1,9 @@
 import { Component, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InlinePaymentOptions } from '../interfaces/checkout-model';
+import {
+  InlinePaymentOptions,
+  SpotflowCheckoutProps,
+} from '../interfaces/checkout-model';
 
 @Component({
   selector: 'spotflow-make-payment',
@@ -45,12 +48,16 @@ export class MakePaymentComponent {
         this.inlinePaymentOptions.email &&
         this.inlinePaymentOptions.email
       ) {
-        const payment = new checkout.CheckoutForm(
-          this.inlinePaymentOptions?.merchantKey,
-          this.inlinePaymentOptions?.email,
-          this.inlinePaymentOptions?.amount || 0
-        );
-        payment.setup();
+        const payment = new checkout.CheckoutForm({});
+
+        const paymentInitData: SpotflowCheckoutProps = {
+          merchantKey: this.inlinePaymentOptions.merchantKey,
+          encryptionKey: this.inlinePaymentOptions.encryptionKey,
+          planId: this.inlinePaymentOptions.planId,
+          email: this.inlinePaymentOptions.email,
+          amount: this.inlinePaymentOptions.amount || 0,
+        };
+        payment.setup(paymentInitData);
       } else {
         console.error(
           'Invalid payment data, kindly check the amount, email and secret key provided'
