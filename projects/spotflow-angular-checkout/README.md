@@ -1,23 +1,36 @@
 # Spotflow Angular Library
 
-The SDK help you create a sealess payment in you angular app. Our Spotflow slider helps you to collect payment in no time
+The **Spotflow Angulr Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
-Available features includes:
+Available Features:
 
-- Collections: Card, Bank Transfer, USSD
-- Tokenisation and Subscriptions
+- Collections: Card, Bank Transfers, USSD
+- Recurring payments: Tokenization and Subscriptions.
+
+## Table of Contents
+
+1. [Requirements](#requirements)
 
 ## Requirements
 
-1. Spotflow API Merchant Keys
-2. Node version >=16..0 and npm > = 7.xx
+1. Spoflow Encryption keys
+2. Spotflow API keys
+3. Node versions >= 16.x.x npm >=7.x.x
+
+## Demo
+
+![Alt text](./demo-image.png "a title")
 
 ## Installation
 
 ```bash
-$ npm install @spot-flow/ng-spotflow-checkout
+
+  $ npm install @spot-flow/ng-spotflow-checkout
 # or 
-$ yarn add @spot-flow/ng-spotflow-checkout
+  $ yarn add @spot-flow/ng-spotflow-checkout
+# or 
+  pnpm add @spot-flow/ng-spotflow-checkout
+
 ```
 
 ## Initialization
@@ -140,3 +153,37 @@ export class AppComponent {
 }
 
 ```
+
+### Parameters
+
+Read more about our parameters and how they can be used [here](https://developer.flutterwave.com/docs/collecting-payments/inline).
+
+| Parameter           | Always Required ? |Description     |
+| ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| merchantKey         | True              | Your API public |
+| reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
+| currency            | False             | currency to charge in. Defaults to NGN                 |
+| encryptionKey       | True               | This is the encryption key for the merchant |
+| planId   | True | This is the plan id being paid for  |
+| firstname | False | This is the Customer Preview Name |
+| lastname | False | This is the Customer Preview Last Name |
+| regionId | False | this is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone numbern of the customer |
+
+## Contribting Guidelines
+
+We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
+
+## Supports
+
+## License
+
+By contributing to this library, you agree that your contributions will be licensed under its [MIT license](/LICENSE).
+
+Copyright (c) Spotflow Inc.
+
+## Contributors
+
+- [Olukayode Ogunnowo](http://github.com/dansagam)
+- [Oluwatosin Jimoh](https://github.com/ekiira)
