@@ -3,7 +3,6 @@ import {
   InlinePaymentOptions,
   SpotflowCheckoutProps,
 } from './interfaces/checkout-model';
-// import { CheckoutForm } from '@spot-flow/checkout-inline-js';
 
 @Injectable({
   providedIn: 'root',

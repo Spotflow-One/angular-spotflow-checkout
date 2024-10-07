@@ -3,8 +3,7 @@
   "version": "0.0.16",
   "peerDependencies": {
     "@angular/common": "^18.1.0",
-    "@angular/core": "^18.1.0",
-    "@spot-flow/checkout-inline-js": "^0.0.5"
+    "@angular/core": "^18.1.0"
   },
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "repository": {
