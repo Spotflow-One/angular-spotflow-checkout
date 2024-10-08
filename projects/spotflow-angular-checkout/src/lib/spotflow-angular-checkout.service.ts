@@ -8,7 +8,15 @@ import {
   providedIn: 'root',
 })
 export class SpotflowAngularCheckoutService {
-  constructor() {}
+  constructor() {
+    const script = document.createElement('script');
+    const inlineSdk =
+      'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js';
+    script.src = inlineSdk;
+    if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+      document.body.appendChild(script);
+    }
+  }
 
   setup(paymentData: InlinePaymentOptions) {
     if (window.SpotflowCheckout) {

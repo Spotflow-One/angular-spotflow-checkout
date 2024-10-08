@@ -1,14 +1,12 @@
-import { Component, input, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import {
   InlinePaymentOptions,
   SpotflowCheckoutProps,
 } from '../interfaces/checkout-model';
+import { SpotflowAngularCheckoutService } from '../spotflow-angular-checkout.service';
 
 @Component({
   selector: 'spotflow-make-payment',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './make-payment.component.html',
   styleUrl: './make-payment.component.css',
   providers: [],
@@ -20,52 +18,50 @@ export class MakePaymentComponent {
   @Input() encryption_key!: string;
   @Input() amount?: number;
   @Input() tx_ref?: string;
-  @Input() style: any;
+  @Input() regionId?: string;
+  @Input() firstname?: string;
+  @Input() lastname?: string;
+  @Input() currency?: string;
+  @Input() style: { [key: string]: string } = {};
   @Input() data?: InlinePaymentOptions;
-  @Input() className?: string;
+  @Input() ngClass: string | string[] | { [key: string]: boolean } = {};
   @Input() text?: string;
 
-  constructor() {
-    const script = document.createElement('script');
-    const inlineSdk =
-      'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js';
-    script.src = inlineSdk;
-    if (!document.querySelector(`[src="${inlineSdk}"]`)) {
-      document.body.appendChild(script);
-    }
+  constructor(  private spotflowAngularCheckoutService: SpotflowAngularCheckoutService) {
+
   }
   private inlinePaymentOptions!: InlinePaymentOptions;
 
   makePayment() {
     this.preparePayment();
-    // if (this.inlinePaymentOptions) {
-    //   this.spotflowService.setup(this.inlinePaymentOptions);
-    // }
-    if (window.SpotflowCheckout) {
-      const checkout = window.SpotflowCheckout;
       if (
-        this.inlinePaymentOptions.amount &&
+        this.inlinePaymentOptions.merchantKey &&
         this.inlinePaymentOptions.email &&
-        this.inlinePaymentOptions.email
+        this.inlinePaymentOptions.encryptionKey
       ) {
-        const payment = new checkout.CheckoutForm({});
-
         const paymentInitData: SpotflowCheckoutProps = {
           merchantKey: this.inlinePaymentOptions.merchantKey,
           encryptionKey: this.inlinePaymentOptions.encryptionKey,
           planId: this.inlinePaymentOptions.planId,
           email: this.inlinePaymentOptions.email,
           amount: this.inlinePaymentOptions.amount || 0,
+          currency: this.inlinePaymentOptions.currency || 'NGN',
+          ...(this.inlinePaymentOptions.firstname && {
+            firstname: this.inlinePaymentOptions.firstname,
+          }),
+          ...(this.inlinePaymentOptions.lastname && {
+            lastname: this.inlinePaymentOptions.lastname,
+          }),
+          ...(this.inlinePaymentOptions.regionId && {
+            regionId: this.inlinePaymentOptions.regionId,
+          }),
         };
-        payment.setup(paymentInitData);
+        this.spotflowAngularCheckoutService.setup(paymentInitData)
       } else {
         console.error(
           'Invalid payment data, kindly check the amount, email and secret key provided'
         );
       }
-    } else {
-      console.error('SpotflowCheckout is not defined');
-    }
   }
 
   ngOnInit(): void {}
@@ -78,6 +74,10 @@ export class MakePaymentComponent {
       amount: this.amount,
       tx_ref: this.tx_ref,
       encryptionKey: this.encryption_key,
+      currency: this.currency,
+      regionId: this.regionId,
+      firstname: this.firstname,
+      lastname: this.lastname,
     };
   }
 }

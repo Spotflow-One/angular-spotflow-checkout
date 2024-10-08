@@ -1,15 +1,21 @@
 # Spotflow Angular Library
 
-The **Spotflow Angulr Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow Angular Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
 Available Features:
 
-- Collections: Card, Bank Transfers, USSD
+- Collections: Card, Bank Transfers.
 - Recurring payments: Tokenization and Subscriptions.
 
 ## Table of Contents
 
 1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Parameters](#parameters)
+5. [License](#license)
+6. [Contributing Guidelines](#contribting-guidelines)
+7. [Contributors](#contributors)
 
 ## Requirements
 
@@ -33,149 +39,88 @@ Available Features:
 
 ```
 
-## Initialization
+## Usage
 
-For older version of Angular, you can use the module but for recent, standalone angular version
+[As a commponent](#using-spotflow-as-components)
 
-1 for standard Angular version
+**app.module.ts**
 
 ```typescript
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
 import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, SpotflowAngularCheckoutModule],
+  imports: [BrowserModule, SpotflowAngularCheckoutModule],
   providers: [],
   bootstrap: [AppComponent],
 })
+export class AppModule {}
+
 ```
 
-2 for standalone angular version
 
+**app.component.ts**
 ```typescript
+
+import { Component } from '@angular/core';
+import { SpotflowAngularCheckoutService } from '@spot-flow/ng-spotflow-checkout';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
   templateUrl: './app.component.html',
-  template: `
-  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
-    [email]="email" className="btn-primary">
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  amount = 400;
+  email = 'temi@mailinator.com';
+  merchantKey = "sk_test_fXXXXedhXXXXXXXXXXXXXXXX";
+  planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034';
+  encryptionKey = 'SKKXXXXXXXXXXXXXXXXX';
+}
+```
+
+
+**app.component.html**
+
+```html
+  <spotflow-make-payment
+    text="Pay"
+    [secret_key]="merchantKey"
+    [plan_id]="planId"
+    [email]="email"
+    [amount]="amount"
+    [encryption_key]="encryptionKey"
+    [style]="{ 'background-color': 'black', color: 'white' }"
+  >
   </spotflow-make-payment>
-  `,
-  styleUrl: './app.component.scss',
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
-  merchantKey = 'sk_test_f9984*****************';
-  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
-  email = 'oajhdjkna@gamil.com';
-  amount = 9;
-  currency = 'NGN';
-}
-
-```
-
-## Usage
-
-Two ways of using the package
-
-1. [As a commponent](#using-spotflow-as-components)
-2. [As a Direct Serive](#using-directly-as-a-service)
-
-### Using Spotflow as components
-
-```typescript
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
-  templateUrl: './app.component.html',
-  template: `
-  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
-    [email]="email" className="btn-primary">
-  </spotflow-make-payment>
-  `,
-  styleUrl: './app.component.scss',
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
-  merchantKey = 'sk_test_f9984*****************';
-  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
-  email = 'oajhdjkna@gamil.com';
-  amount = 9;
-  currency = 'NGN';
-}
-
-```
-
-### Using directly as a service
-
-```typescript
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, SpotflowAngularCheckoutModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers: [SpotflowAngularCheckoutService],
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  merchantKey = 'sk_test_f998479c0******************8dab27';
-  planId = 'a9d53c4c-4452-4d00-953e-************';
-  email = 'olu************owo@yupmail.com';
-  amount = 9;
-  currency = 'NGN';
-
-  constructor(
-    private spotflowAngularCheckoutService: SpotflowAngularCheckoutService
-  ) {}
-
-  makePayment() {
-    const paymentData = {
-      amount: this.amount,
-      currency: this.currency,
-      email: this.email,
-      merchantKey: this.merchantKey,
-      reference: '',
-      plan: this.planId,
-    };
-
-    this.spotflowAngularCheckoutService.setup(paymentData);
-  }
-}
-
 ```
 
 ### Parameters
 
-Read more about our parameters and how they can be used [here](https://developer.flutterwave.com/docs/collecting-payments/inline).
+Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
 | Parameter           | Always Required ? |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| merchantKey         | True              | Your API public |
+| merchantKey         | True              | Your API secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
 | amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | currency to charge in. Defaults to NGN                 |
+| currency            | False             | Currency to charge in. Defaults to NGN                 |
 | encryptionKey       | True               | This is the encryption key for the merchant |
 | planId   | True | This is the plan id being paid for  |
-| firstname | False | This is the Customer Preview Name |
-| lastname | False | This is the Customer Preview Last Name |
-| regionId | False | this is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone numbern of the customer |
+| firstname | False | This is the Customer First Name |
+| lastname | False | This is the Customer Last Name |
+| regionId | False | This is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone number of the customer |
 
 ## Contribting Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## Supports
 
 ## License
 
@@ -186,4 +131,4 @@ Copyright (c) Spotflow Inc.
 ## Contributors
 
 - [Olukayode Ogunnowo](http://github.com/dansagam)
-- [Oluwatosin Jimoh](https://github.com/ekiira)
+- [Oluwatomisin Jimoh](https://github.com/ekiira)

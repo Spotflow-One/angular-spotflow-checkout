@@ -10,6 +10,12 @@ Available Features:
 ## Table of Contents
 
 1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Parameters](#parameters)
+5. [License](#license)
+6. [Contributing Guidelines](#contribting-guidelines)
+7. [Contributors](#contributors)
 
 ## Requirements
 
@@ -33,125 +39,66 @@ Available Features:
 
 ```
 
-## Initialization
+## Usage
 
-For older version of Angular, you can use the module but for recent, standalone angular version
+[As a commponent](#using-spotflow-as-components)
 
-1 for standard Angular version
+**app.module.ts**
 
 ```typescript
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
 import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CommonModule, SpotflowAngularCheckoutModule],
+  imports: [BrowserModule, SpotflowAngularCheckoutModule],
   providers: [],
   bootstrap: [AppComponent],
 })
+export class AppModule {}
+
 ```
 
-2 for standalone angular version
 
+**app.component.ts**
 ```typescript
+
+import { Component } from '@angular/core';
+import { SpotflowAngularCheckoutService } from '@spot-flow/ng-spotflow-checkout';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
   templateUrl: './app.component.html',
-  template: `
-  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
-    [email]="email" className="btn-primary">
+  styleUrls: ['./app.component.css'],
+})
+
+export class AppComponent {
+  title = 'spotflow-ng-demo';
+  amount = 400;
+  email = 'temi@mailinator.com';
+  merchantKey = "sk_test_fXXXXedhXXXXXXXXXXXXXXXX";
+  planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034';
+  encryptionKey = 'SKKXXXXXXXXXXXXXXXXX';
+}
+```
+
+
+**app.component.html**
+
+```html
+  <spotflow-make-payment
+    text="Pay"
+    [secret_key]="merchantKey"
+    [plan_id]="planId"
+    [email]="email"
+    [amount]="amount"
+    [encryption_key]="encryptionKey"
+    [style]="{ 'background-color': 'black', color: 'white' }"
+  >
   </spotflow-make-payment>
-  `,
-  styleUrl: './app.component.scss',
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  // use your Secre API keys <sk_test_f998479c0e******************8dab2>
-  merchantKey = 'sk_test_f9984*****************';
-  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
-  email = 'oajhdjkna@gamil.com';
-  amount = 9;
-  currency = 'NGN';
-}
-
-```
-
-## Usage
-
-Two ways of using the package
-
-1. [As a commponent](#using-spotflow-as-components)
-2. [As a Direct Serive](#using-directly-as-a-service)
-
-### Using Spotflow as components
-
-```typescript
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [ MakePaymentComponent, SpotflowAngularCheckoutModule],
-  templateUrl: './app.component.html',
-  template: `
-  <spotflow-make-payment text="Pay NGN 10" [secret_key]="merchantKey" [plan_id]="planId" [amount]="amount"
-    [email]="email" className="btn-primary">
-  </spotflow-make-payment>
-  `,
-  styleUrl: './app.component.scss',
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  // use your Secret API keys <sk_test_f998479c0e******************8dab2>
-  merchantKey = 'sk_test_f9984*****************';
-  planId = 'a9d53c4c-4452-4d00-953e-bb0f************';
-  email = 'oajhdjkna@gamil.com';
-  amount = 9;
-  currency = 'NGN';
-}
-
-```
-
-### Using directly as a service
-
-```typescript
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, SpotflowAngularCheckoutModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers: [SpotflowAngularCheckoutService],
-})
-export class AppComponent {
-  title = 'spotflow-ng-demo';
-  merchantKey = 'sk_test_f998479c0******************8dab27';
-  planId = 'a9d53c4c-4452-4d00-953e-************';
-  email = 'olu************owo@yupmail.com';
-  amount = 9;
-  currency = 'NGN';
-
-  constructor(
-    private spotflowAngularCheckoutService: SpotflowAngularCheckoutService
-  ) {}
-
-  makePayment() {
-    const paymentData = {
-      amount: this.amount,
-      currency: this.currency,
-      email: this.email,
-      merchantKey: this.merchantKey,
-      reference: '',
-      plan: this.planId,
-    };
-
-    this.spotflowAngularCheckoutService.setup(paymentData);
-  }
-}
-
 ```
 
 ### Parameters
@@ -174,8 +121,6 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 ## Contribting Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## Supports
 
 ## License
 
