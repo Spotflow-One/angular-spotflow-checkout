@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SpotflowAngularCheckoutService } from './spotflow-angular-checkout.service';
+import { MakePaymentComponent } from './make-payment/make-payment.component';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [MakePaymentComponent],
   imports: [CommonModule],
+  exports: [MakePaymentComponent],
   providers: [SpotflowAngularCheckoutService],
 })
 export class SpotflowAngularCheckoutModule {

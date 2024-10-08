@@ -5,6 +5,10 @@ export interface InlinePaymentOptions {
   email: string;
   amount?: number;
   tx_ref?: string;
+  currency?: string;
+  regionId?: string;
+  firstname?: string;
+  lastname?: string;
   onSuccess?: (_val?: any) => void;
   onClose?: () => void;
 }

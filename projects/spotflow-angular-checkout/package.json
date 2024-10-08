@@ -1,9 +1,9 @@
 {
   "name": "@spot-flow/ng-spotflow-checkout",
-  "version": "0.0.16",
+  "version": "0.0.24",
   "peerDependencies": {
-    "@angular/common": "^18.1.0",
-    "@angular/core": "^18.1.0"
+    "@angular/common": "^17.0.0 || ^18.0.0",
+    "@angular/core": "^17.0.0 || ^18.0.0"
   },
   "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
   "repository": {
