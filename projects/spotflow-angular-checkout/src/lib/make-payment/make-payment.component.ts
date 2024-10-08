@@ -1,9 +1,9 @@
-import { Component, input, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import {
   InlinePaymentOptions,
   SpotflowCheckoutProps,
 } from '../interfaces/checkout-model';
+import { SpotflowAngularCheckoutService } from '../spotflow-angular-checkout.service';
 
 @Component({
   selector: 'spotflow-make-payment',
@@ -27,20 +27,18 @@ export class MakePaymentComponent {
   @Input() ngClass: string | string[] | { [key: string]: boolean } = {};
   @Input() text?: string;
 
-  constructor() {}
+  constructor(  private spotflowAngularCheckoutService: SpotflowAngularCheckoutService) {
+
+  }
   private inlinePaymentOptions!: InlinePaymentOptions;
 
   makePayment() {
     this.preparePayment();
-    if (window.SpotflowCheckout) {
-      const checkout = window.SpotflowCheckout;
       if (
         this.inlinePaymentOptions.merchantKey &&
         this.inlinePaymentOptions.email &&
         this.inlinePaymentOptions.encryptionKey
       ) {
-        const payment = new checkout.CheckoutForm({});
-
         const paymentInitData: SpotflowCheckoutProps = {
           merchantKey: this.inlinePaymentOptions.merchantKey,
           encryptionKey: this.inlinePaymentOptions.encryptionKey,
@@ -58,15 +56,12 @@ export class MakePaymentComponent {
             regionId: this.inlinePaymentOptions.regionId,
           }),
         };
-        payment.setup(paymentInitData);
+        this.spotflowAngularCheckoutService.setup(paymentInitData)
       } else {
         console.error(
           'Invalid payment data, kindly check the amount, email and secret key provided'
         );
       }
-    } else {
-      console.error('SpotflowCheckout is not defined');
-    }
   }
 
   ngOnInit(): void {}
