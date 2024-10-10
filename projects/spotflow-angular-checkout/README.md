@@ -1,11 +1,11 @@
 # Spotflow Angular Library
 
-The **Spotflow Angular Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow Angular SDK** enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
 
 Available Features:
 
 - Collections: Card, Bank Transfers.
-- Recurring payments: Tokenization and Subscriptions.
+- Recurring Payments: Tokenization and Subscriptions.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Available Features:
 3. [Usage](#usage)
 4. [Parameters](#parameters)
 5. [License](#license)
-6. [Contributing Guidelines](#contribting-guidelines)
+6. [Contribution Guidelines](#contribution-guidelines)
 7. [Contributors](#contributors)
 
 ## Requirements
@@ -41,7 +41,7 @@ Available Features:
 
 ## Usage
 
-[As a commponent](#using-spotflow-as-components)
+[As a component](#using-spotflow-as-components)
 
 **app.module.ts**
 
@@ -115,10 +115,10 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | planId   | True | This is the plan id being paid for  |
 | firstname | False | This is the Customer First Name |
 | lastname | False | This is the Customer Last Name |
-| regionId | False | This is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone number of the customer |
+| regionId (optional) | False | This is the merchant's region where the customer is subscribed to |
+| phone (optional) | False | This is the phone number of the customer |
 
-## Contribting Guidelines
+## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
 
