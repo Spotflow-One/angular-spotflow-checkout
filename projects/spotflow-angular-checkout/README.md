@@ -1,11 +1,11 @@
 # Spotflow Angular Library
 
-The **Spotflow Angular Sdk** helps you or rather enables users to make payments seamlessly. It integrates smoothly into your application, providing a streamlined checkout experience.
+The **Spotflow Angular SDK** enables users to make payments seamlessly. It integrates smoothly into your **Angular** application, providing a streamlined checkout experience.
 
 Available Features:
 
 - Collections: Card, Bank Transfers.
-- Recurring payments: Tokenization and Subscriptions.
+- Recurring Payments: Tokenization and Subscriptions.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Available Features:
 3. [Usage](#usage)
 4. [Parameters](#parameters)
 5. [License](#license)
-6. [Contributing Guidelines](#contribting-guidelines)
+6. [Contribution Guidelines](#contribution-guidelines)
 7. [Contributors](#contributors)
 
 ## Requirements
@@ -41,7 +41,7 @@ Available Features:
 
 ## Usage
 
-[As a commponent](#using-spotflow-as-components)
+[As a component](#using-spotflow-as-components)
 
 **app.module.ts**
 
@@ -67,7 +67,6 @@ export class AppModule {}
 ```typescript
 
 import { Component } from '@angular/core';
-import { SpotflowAngularCheckoutService } from '@spot-flow/ng-spotflow-checkout';
 
 @Component({
   selector: 'app-root',
@@ -77,10 +76,11 @@ import { SpotflowAngularCheckoutService } from '@spot-flow/ng-spotflow-checkout'
 
 export class AppComponent {
   title = 'spotflow-ng-demo';
-  amount = 400;
+  currency = 'NGN' // This is not required for subscription payments.
+  amount = 400; // This is not required for subscription payments.
   email = 'temi@mailinator.com';
   merchantKey = "sk_test_fXXXXedhXXXXXXXXXXXXXXXX";
-  planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034';
+  planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034'; // This is not required for one time payments
   encryptionKey = 'SKKXXXXXXXXXXXXXXXXX';
 }
 ```
@@ -95,6 +95,7 @@ export class AppComponent {
     [plan_id]="planId"
     [email]="email"
     [amount]="amount"
+    [currency]="currency"
     [encryption_key]="encryptionKey"
     [style]="{ 'background-color': 'black', color: 'white' }"
   >
@@ -105,20 +106,22 @@ export class AppComponent {
 
 Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
-| Parameter           | Always Required ? |Description     |
+| Parameter           | Required |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | Currency to charge in. Defaults to NGN                 |
+| amount              | False              | Amount to charge the customer. This is not required when making a subscription payment    |
+| currency            | False             | Currency to charge in. This is not required when a making subscription payment                |
 | encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for  |
+| planId   | True | This is the plan id being paid for. This is not required when making one time payments |
 | firstname | False | This is the Customer First Name |
 | lastname | False | This is the Customer Last Name |
-| regionId | False | This is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone number of the customer |
+| regionId (optional) | False | This is the merchant's region where the customer is subscribed to |
+| phone (optional) | False | This is the phone number of the customer |
 
-## Contribting Guidelines
+
+
+## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
 

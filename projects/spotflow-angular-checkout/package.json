@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/ng-spotflow-checkout",
-  "version": "0.0.27",
+  "version": "0.0.29",
   "peerDependencies": {
     "@angular/common": "^17.0.0 || ^18.0.0",
     "@angular/core": "^17.0.0 || ^18.0.0"
