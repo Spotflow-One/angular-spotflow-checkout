@@ -31,6 +31,9 @@ export class SpotflowAngularCheckoutService {
         planId: paymentData.planId,
         email: paymentData.email,
         amount: paymentData.amount || 0,
+        metadata: paymentData.metadata,
+        localCurrency: paymentData.localCurrency,
+        callbackUrl: paymentData.callbackUrl
       };
       payment.setup(paymentInitData);
     } else {
