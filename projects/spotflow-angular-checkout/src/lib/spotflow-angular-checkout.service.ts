@@ -33,7 +33,7 @@ export class SpotflowAngularCheckoutService {
         amount: paymentData.amount || 0,
         metadata: paymentData.metadata,
         localCurrency: paymentData.localCurrency,
-        callbackUrl: paymentData.callbackUrl
+        callBackUrl: paymentData.callBackUrl
       };
       payment.setup(paymentInitData);
     } else {
