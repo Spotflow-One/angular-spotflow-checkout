@@ -76,8 +76,8 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'spotflow-ng-demo';
-  currency = 'NGN' // This is not required for subscription payments.
-  amount = 400; // This is not required for subscription payments.
+  currency = 'NGN' // This is not required for subscription payments
+  amount = 400; // This is not required for subscription payments
   email = 'temi@mailinator.com';
   merchantKey = "sk_test_fXXXXedhXXXXXXXXXXXXXXXX";
   planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034'; // This is not required for one time payments
@@ -92,10 +92,10 @@ export class AppComponent {
   <spotflow-make-payment
     text="Pay"
     [secret_key]="merchantKey"
-    [plan_id]="planId"
+    [plan_id]="planId"   <!-- This is not required for one time payments -->
     [email]="email"
-    [amount]="amount"
-    [currency]="currency"
+    [amount]="amount"   <!--This is not required for subscription payments -->
+    [currency]="currency" <!--This is not required for subscription payments -->
     [encryption_key]="encryptionKey"
     [style]="{ 'background-color': 'black', color: 'white' }"
   >
