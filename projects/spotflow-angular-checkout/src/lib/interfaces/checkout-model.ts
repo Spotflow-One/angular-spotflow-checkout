@@ -9,7 +9,7 @@ export interface InlinePaymentOptions {
   regionId?: string;
   firstname?: string;
   lastname?: string;
-  metadata?: object;
+  metadata?: Record<string, any>;
   localCurrency?: string;
   callBackUrl?: string;
   onSuccess?: (_val?: any) => void;
@@ -30,7 +30,7 @@ export type SpotflowCheckoutProps = {
   reference?: string;
   firstname?: string;
   lastname?: string;
-  metadata?: object;
+  metadata?: Record<string, any>;
   localCurrency?: string;
   callBackUrl?: string;
   onTransferConfirmationPending?: (_val?: any) => void;
