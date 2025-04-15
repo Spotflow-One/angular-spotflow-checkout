@@ -43,45 +43,22 @@ Available Features:
 
 [As a component](#using-spotflow-as-components)
 
-**app.module.ts**
-
-```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, SpotflowAngularCheckoutModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-
-```
-
-
 **app.component.ts**
 ```typescript
 
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { SpotflowAngularCheckoutModule } from '@spot-flow/ng-spotflow-checkout';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, SpotflowAngularCheckoutModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrl: './app.component.css',
 })
-
 export class AppComponent {
-  title = 'spotflow-ng-demo';
-  currency = 'NGN' // This is not required for subscription payments
-  amount = 400; // This is not required for subscription payments
-  email = 'temi@mailinator.com';
-  merchantKey = "sk_test_fXXXXedhXXXXXXXXXXXXXXXX";
-  planId = '9e0808304-344d-XXXXXXXXX-XXXXX834034'; // This is not required for one time payments
-  encryptionKey = 'SKKXXXXXXXXXXXXXXXXX';
+  title = '';
 }
 ```
 
@@ -91,15 +68,15 @@ export class AppComponent {
 ```html
   <spotflow-make-payment
     text="Pay"
-    [secret_key]="merchantKey"
-    [plan_id]="planId"   <!-- This is not required for one time payments -->
-    [email]="email"
-    [amount]="amount"   <!--This is not required for subscription payments -->
-    [currency]="currency" <!--This is not required for subscription payments -->
-    [encryption_key]="encryptionKey"
+    secret_key="merchantKey"
+    email="email"
+    [amount]="amount" 
+    currency="currency"
+    encryption_key="encryptionKey"
     [style]="{ 'background-color': 'black', color: 'white' }"
   >
   </spotflow-make-payment>
+  <router-outlet/>
 ```
 
 ### Parameters
@@ -108,16 +85,19 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 
 | Parameter           | Required |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| merchantKey         | True              | Your API secret |
+| merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. This is not required when making a subscription payment    |
-| currency            | False             | Currency to charge in. This is not required when a making subscription payment                |
-| encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for. This is not required when making one time payments |
-| firstname | False | This is the Customer First Name |
-| lastname | False | This is the Customer Last Name |
-| regionId (optional) | False | This is the merchant's region where the customer is subscribed to |
-| phone (optional) | False | This is the phone number of the customer |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.   |
+| currency            | True             | Currency to charge in.           |
+| localCurrency       | False            | This is only required when a payment is being made in USD  |
+| encryptionKey       | True               | This is the encryption key for the merchant. This is required for card payments. |
+| planId   | False | This is the plan ID being paid for however, this is not required for one time payments.   |
+| firstName | False | This is the Customer's First Name |
+| lastName | False | This is the Customer's Last Name |
+| phone | False | This is the Customer's Phone Number |
+| email | True | This is the Customer's Email Address |
+| metadata | True | This contains other information about the product such as the product name and other additional properties. Product Name should not be passed if planId is being passed |
+| callBackUrl | False | This is the URL the browser redirects to on success of a payment |
 
 
 
@@ -130,8 +110,3 @@ We welcome contributions from the community. Read more about our community contr
 By contributing to this library, you agree that your contributions will be licensed under its [MIT license](/LICENSE).
 
 Copyright (c) Spotflow Inc.
-
-## Contributors
-
-- [Olukayode Ogunnowo](http://github.com/dansagam)
-- [Oluwatomisin Jimoh](https://github.com/ekiira)
