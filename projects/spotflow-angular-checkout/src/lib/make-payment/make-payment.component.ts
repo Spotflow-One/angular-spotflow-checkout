@@ -22,6 +22,9 @@ export class MakePaymentComponent {
   @Input() firstname?: string;
   @Input() lastname?: string;
   @Input() currency?: string;
+  @Input() localCurrency?: string;
+  @Input() metadata?: { [key: string]: any };
+  @Input() callBackUrl?: string;
   @Input() style: { [key: string]: string } = {};
   @Input() data?: InlinePaymentOptions;
   @Input() ngClass: string | string[] | { [key: string]: boolean } = {};
@@ -45,15 +48,15 @@ export class MakePaymentComponent {
           planId: this.inlinePaymentOptions.planId,
           email: this.inlinePaymentOptions.email,
           amount: this.inlinePaymentOptions.amount || 0,
-          currency: this.inlinePaymentOptions.currency || 'NGN',
-          ...(this.inlinePaymentOptions.firstname && {
-            firstname: this.inlinePaymentOptions.firstname,
+          ...(this.inlinePaymentOptions.localCurrency && {
+            localCurrency: this.inlinePaymentOptions.localCurrency
           }),
-          ...(this.inlinePaymentOptions.lastname && {
-            lastname: this.inlinePaymentOptions.lastname,
+          ...(this.inlinePaymentOptions.metadata && {
+            metadata: this.inlinePaymentOptions.metadata,
           }),
-          ...(this.inlinePaymentOptions.regionId && {
-            regionId: this.inlinePaymentOptions.regionId,
+          currency: this.inlinePaymentOptions.currency,
+          ...(this.inlinePaymentOptions.callBackUrl && {
+            callBackUrl: this.inlinePaymentOptions.callBackUrl
           }),
         };
         this.spotflowAngularCheckoutService.setup(paymentInitData)
@@ -70,6 +73,9 @@ export class MakePaymentComponent {
     this.inlinePaymentOptions = {
       email: this.email,
       merchantKey: this.secret_key,
+      localCurrency: this.localCurrency,
+      callBackUrl: this.callBackUrl,
+      metadata: this.metadata,
       planId: this.plan_id,
       amount: this.amount,
       tx_ref: this.tx_ref,
