@@ -13,8 +13,8 @@ Available Features:
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Parameters](#parameters)
-5. [License](#license)
-6. [Contribution Guidelines](#contribution-guidelines)
+5. [License](/LICENSE)
+6. [Contribution Guidelines](/CONTRIBUTING.md)
 7. [Contributors](#contributors)
 
 ## Requirements
@@ -99,11 +99,42 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | metadata | True | This contains other information about the product such as the product name and other additional properties. Product Name should not be passed if planId is being passed |
 | callBackUrl | False | This is the URL the browser redirects to on success of a payment |
 
+# 🎉 Spotflow Hacktoberfest 2025
 
+Welcome to **Spotflow’s open-source repositories** — part of this year’s **Hacktoberfest Challenge** by DigitalOcean!
+
+Spotflow is a global **Merchant of Record (MoR)** that simplifies payment processing for businesses worldwide.  
+We handle everything from global payment acceptance to compliance and settlement — empowering merchants to go global effortlessly.
+
+## 🚀 How to Participate
+
+1. Register for Hacktoberfest at [hacktoberfest.com](https://hacktoberfest.com)
+2. Fork this repository.
+3. Choose an issue labeled **`hacktoberfest`** or **`good first issue`**.
+4. Make your contribution (see [Contributing Guidelines](./CONTRIBUTING.md)).
+5. Open a pull request (PR) and add a **`hacktoberfest-accepted`** label to your PR.
+6. Once approved and merged — it counts toward your Hacktoberfest goal!
+
+## 💡 What You Can Contribute
+- Improve or add SDK functionality  
+- Write or improve API documentation 
+- Spot bugs/improvements and write new issues (use [Issues Template](./ISSUE_TEMPLATE.md) as a guide).
+- Add new language SDKs (Python, JS, Java, etc.)  
+- Fix typos, formatting, or examples  
+- Write tutorials or integration guides  
+
+## 📅 Important Dates
+- **Event:** October 1 – October 31, 2025
+- **Application Deadline:** October 31, 2025
+
+## 🧠 Resources
+- Docs: [https://docs.spotflow.one](https://docs.spotflow.one)
+- API Playground: [https://www.spotflow.one/demo](https://www.spotflow.one/demo)
+- Sign up: [Spotflow Hacktoberfest Form](https://forms.gle/5KXXiy7mR35ocahL6)
 
 ## Contribution Guidelines
 
-We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
+We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTING.md).
 
 ## License
 
