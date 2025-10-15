@@ -68,11 +68,11 @@ export class AppComponent {
 ```html
   <spotflow-make-payment
     text="Pay"
-    secret_key="merchantKey"
+    merchantKey="merchantKey"
     email="email"
     [amount]="amount" 
     currency="currency"
-    encryption_key="encryptionKey"
+    encryptionKey="encryptionKey"
     [style]="{ 'background-color': 'black', color: 'white' }"
   >
   </spotflow-make-payment>
