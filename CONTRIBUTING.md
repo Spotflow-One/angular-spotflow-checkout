@@ -29,7 +29,7 @@ Clone the repo and install dependencies:
 git clone https://github.com/Spotflow-One/angular-spotflow-checkout.git
 cd angular-spotflow-checkout
 npm install
-npm run test
+ng serve
 ```
 
 ## 🏁 Maintainers
