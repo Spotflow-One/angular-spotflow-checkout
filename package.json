@@ -1,12 +1,12 @@
 {
   "name": "@spot-flow/ng-spotflow-checkout",
-  "version": "0.0.41",
-  "author": "Kayode Ogunnowo <olukayodeogunnowo@gmail.com>",
+  "version": "0.0.43",
   "main": "",
   "license": "MIT",
   "keywords": [
     "Spotflow",
-    "Angular"
+    "Angular",
+    "payment"
   ],
   "repository": {
     "type": "git",
